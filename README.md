@@ -2,18 +2,9 @@
 
 app.
 
-## SQL - order of tables
+## SQL
 
-user
-organisation
-task
-category
-roles
-User Organization
-Task Assignment
-Task
-
-## Thanks
+## Thanks to
 
 Register background Photo by <a href="https://unsplash.com/@shot__seeker?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Mario Esposito</a> on <a href="https://unsplash.com/photos/a-plane-flying-in-the-sky-over-a-forest-3lembc75Y5o?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 
