@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 type Inputs = {
   username: '';
   email: '';
@@ -23,7 +24,6 @@ const Register = () => {
   });
 
   const onSubmit: SubmitHandler<Inputs> = async data => {
-    console.log(data);
     const passwordConfirmation = data.password === data.confirm;
     const response =
       passwordConfirmation &&
@@ -40,23 +40,23 @@ const Register = () => {
       }));
     const result = response && (await response.json());
     console.log(result);
-    data.password !== data.confirm
-      ? toast.error('Password not matching', {
-          position: 'bottom-center',
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          progress: undefined,
-          theme: 'colored',
-        })
-      : toast.success('Successfull registerd', {
+    passwordConfirmation
+      ? toast.success('Successfull registerd', {
           position: 'top-center',
           autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored',
+        })
+      : toast.error('Password not matching', {
+          position: 'bottom-center',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
           draggable: true,
           progress: undefined,
           theme: 'colored',
