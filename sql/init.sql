@@ -2,8 +2,7 @@ CREATE TABLE Users (
     userID SERIAL PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     email VARCHAR(50) NOT NULL UNIQUE,
-    password_hash BYTEA NOT NULL, 
-    salt BYTEA NOT NULL, 
+    password TEXT NOT NULL,
     firstName VARCHAR(50) NOT NULL,
     lastName VARCHAR(50) NOT NULL
 );

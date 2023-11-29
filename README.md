@@ -1,6 +1,22 @@
 # Task manager
 
-app.
+To do app.
+
+## Technologies
+
+### Typescript
+
+React
+Express
+
+### Database
+
+Postgres
+pg
+
+### Form handling
+
+React hook form
 
 ## SQL
 
