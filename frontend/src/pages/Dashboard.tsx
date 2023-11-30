@@ -10,14 +10,12 @@ import clsx from 'clsx';
 const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeTaskTab, setActiveTaskTab] = useState(false);
-  // const [activeTaskCreation, setActiveTaskCreation] = useState(false);
 
   const activeTaskCreation = useBearStore(state => state.activeTaskCreation);
+
   const setActiveTaskCreation = useBearStore(
     state => state.activeTaskCreationChange
   );
-
-  console.log(activeTaskCreation);
 
   return (
     <>
@@ -36,7 +34,7 @@ const Dashboard = () => {
           'border h-screen flex justify-center items-center'
         )}>
         <TaskListLayout>
-          <div className="absolute px-7 w-screen top-40">
+          <div className="absolute px-7 top-40">
             <TaskListNavigation
               setActiveTaskCreation={setActiveTaskCreation}
               setActiveTaskTab={setActiveTaskTab}

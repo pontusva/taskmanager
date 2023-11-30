@@ -13,7 +13,7 @@ const TaskListNavigation = ({
 }: Props) => {
   return (
     <>
-      <div className="flex w-full  flex-row justify-between items-center">
+      <div className="flex space-x-2 items-center">
         <div className="text-center">
           <h1 className="text-3xl font-medium">Tasks list</h1>
           <div className="absolute">
@@ -26,7 +26,7 @@ const TaskListNavigation = ({
             )}
           </div>
         </div>
-        <div className="inline-flex space-x-2 items-center">
+        <div className="inline-flex space-x-2 justify-center items-center">
           {activeTaskCreation ? (
             <img
               onClick={() => setActiveTaskCreation()}
