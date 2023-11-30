@@ -1,4 +1,36 @@
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+
+interface Inputs {
+  userName: string;
+  password: string;
+}
+
 const Register = () => {
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+
+    formState: { errors },
+  } = useForm<Inputs>({
+    mode: 'onChange',
+  });
+
+  const onSubmit: SubmitHandler<Inputs> = async data => {
+    const response = await fetch('http://localhost:8000/user/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: data.userName,
+        password: data.password,
+      }),
+    });
+    const loginSuccess = response.ok;
+    const result = await response.json();
+    loginSuccess &&
+      (localStorage.setItem('userid', result.userid), navigate('/dashboard'));
+  };
   return (
     <>
       <>
@@ -17,21 +49,23 @@ const Register = () => {
                 />
                 <span className="text-gray-300">Enter Login Details</span>
               </div>
-              <form action="#">
+              <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex justify-center mb-4 text-lg">
                   <input
+                    {...register('userName', { required: true })}
                     className=" rounded-3xl border-none bg-opacity-50 md:px-6 md:py px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md"
                     type="text"
-                    name="name"
-                    placeholder="id@email.com"
+                    name="userName"
+                    placeholder="iuser name"
                   />
                 </div>
 
                 <div className="flex justify-center mb-4 text-lg">
                   <input
+                    {...register('password', { required: true })}
                     className="rounded-3xl border-nonebg-opacity-50  md:px-0 md:py px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md"
                     type="Password"
-                    name="name"
+                    name="password"
                     placeholder="*********"
                   />
                 </div>
