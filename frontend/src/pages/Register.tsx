@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-type Inputs = {
+interface Inputs {
   username: '';
   email: '';
   password: '';
@@ -11,7 +11,7 @@ type Inputs = {
   passwordMatch: false;
   firstName: '';
   lastName: '';
-};
+}
 
 const Register = () => {
   const {

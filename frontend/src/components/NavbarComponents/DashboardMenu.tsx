@@ -1,12 +1,12 @@
 import clsx from 'clsx';
 import { Dispatch, SetStateAction } from 'react';
 
-type Props = {
+interface Props {
   sidebarOpen: boolean;
   setSidebarOpen: Dispatch<SetStateAction<boolean>>;
   activeTaskTab: boolean;
   setActiveTaskTab: Dispatch<SetStateAction<boolean>>;
-};
+}
 
 const DashboardMenu = ({
   sidebarOpen,

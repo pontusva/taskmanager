@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction } from 'react';
 
-type Props = {
+interface Props {
   setActiveTaskTab: Dispatch<SetStateAction<boolean>>;
   setActiveTaskCreation: Dispatch<SetStateAction<boolean>>;
-};
+}
 
 const TaskListNavigation = ({
   setActiveTaskTab,
