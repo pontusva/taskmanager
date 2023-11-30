@@ -18,7 +18,6 @@ const TaskListCreation = () => {
     handleSubmit,
     control,
     reset,
-    watch,
     formState: { errors },
   } = useForm<Inputs>({
     mode: 'onChange',
