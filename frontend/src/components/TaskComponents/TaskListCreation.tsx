@@ -47,11 +47,19 @@ const TaskListCreation = () => {
                   placeholder="task name *"
                   className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-700 "
                 />
+                {errors.taskName && (
+                  <span className="text-red-400 absolute right-10">
+                    This field is required
+                  </span>
+                )}
               </div>
 
               <div className="md:col-span-2">
                 <Controller
                   name="taskPriority"
+                  rules={{
+                    required: true,
+                  }}
                   control={control}
                   render={({ field }) => (
                     <div className="flex flex-col">
@@ -68,12 +76,20 @@ const TaskListCreation = () => {
                           ] as any
                         }
                       />
+                      {errors.taskPriority && (
+                        <span className="text-red-400 absolute right-10">
+                          This field is required
+                        </span>
+                      )}
                     </div>
                   )}
                 />
 
                 <Controller
                   name="category"
+                  rules={{
+                    required: true,
+                  }}
                   control={control}
                   render={({ field }) => (
                     <div className="flex flex-col">
@@ -90,6 +106,11 @@ const TaskListCreation = () => {
                           ] as any
                         }
                       />
+                      {errors.category && (
+                        <span className="text-red-400 absolute right-10">
+                          This field is required
+                        </span>
+                      )}
                     </div>
                   )}
                 />
