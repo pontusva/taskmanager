@@ -36,10 +36,13 @@ const Dashboard = () => {
           'border h-screen flex justify-center items-center'
         )}>
         <TaskListLayout>
-          <TaskListNavigation
-            setActiveTaskCreation={setActiveTaskCreation}
-            setActiveTaskTab={setActiveTaskTab}
-          />
+          <div className="absolute top-40">
+            <TaskListNavigation
+              setActiveTaskCreation={setActiveTaskCreation}
+              setActiveTaskTab={setActiveTaskTab}
+              activeTaskCreation={activeTaskCreation}
+            />
+          </div>
           {!activeTaskCreation && <TaskList />}
           {activeTaskCreation && <TaskListCreation />}
         </TaskListLayout>

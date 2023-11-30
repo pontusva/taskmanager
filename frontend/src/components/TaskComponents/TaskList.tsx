@@ -1,7 +1,6 @@
 const TaskList = () => {
   return (
     <>
-      <p className="text-slate-500">Hello, here are your latest tasks</p>
       <body className="antialiased relative w-screen   bg-slate-200 text-slate-700 ">
         <div className="   p-10 bg-slate-50 w-full  rounded-xl shadow shadow-slate-300">
           <div id="tasks" className="my-5">

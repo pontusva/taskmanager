@@ -1,57 +1,43 @@
 import { Dispatch, SetStateAction } from 'react';
-
+import ReactLogo from '../../../assets/task-svgrepo-com.svg';
 interface Props {
   setActiveTaskTab: Dispatch<SetStateAction<boolean>>;
-  setActiveTaskCreation: Dispatch<SetStateAction<boolean>>;
+  setActiveTaskCreation: () => void;
+  activeTaskCreation: boolean;
 }
 
 const TaskListNavigation = ({
   setActiveTaskTab,
   setActiveTaskCreation,
+  activeTaskCreation,
 }: Props) => {
   return (
     <>
-      <div className="flex flex-row justify-between items-center">
-        <div>
+      <div className="flex w-full  flex-row justify-between items-center">
+        <div className="text-center">
           <h1 className="text-3xl font-medium">Tasks list</h1>
+          <div className="absolute">
+            {activeTaskCreation ? (
+              <p className="text-slate-500">create a new task</p>
+            ) : (
+              <p className="text-slate-500">
+                Hello, here are your latest tasks
+              </p>
+            )}
+          </div>
         </div>
         <div className="inline-flex space-x-2 items-center">
-          {true ? (
-            <a
-              href="#"
-              className="p-2 border border-slate-200 rounded-md inline-flex space-x-1 items-center text-indigo-200 hover:text-white  hover:bg-indigo-500">
-              <svg
-                fill="#000000"
-                className="w-8 h-8"
-                viewBox="0 0 32 32"
-                onClick={() => setActiveTaskCreation(true)}
-                id="icon"
-                xmlns="http://www.w3.org/2000/svg">
-                <defs></defs>
-                <title>task</title>
-                <polygon points="14 20.18 10.41 16.59 9 18 14 23 23 14 21.59 12.58 14 20.18" />
-                <path
-                  d="M25,5H22V4a2,2,0,0,0-2-2H12a2,2,0,0,0-2,2V5H7A2,2,0,0,0,5,7V28a2,2,0,0,0,2,2H25a2,2,0,0,0,2-2V7A2,2,0,0,0,25,5ZM12,4h8V8H12ZM25,28H7V7h3v3H22V7h3Z"
-                  transform="translate(0 0)"
-                />
-                <rect
-                  id="_Transparent_Rectangle_"
-                  data-name="&lt;Transparent Rectangle&gt;"
-                  className="cls-1"
-                  width="32"
-                  height="32"
-                />
-              </svg>
-
-              <span className="text-sm font-medium hidden md:block">
-                Urgent
-              </span>
-            </a>
+          {activeTaskCreation ? (
+            <img
+              onClick={() => setActiveTaskCreation()}
+              className="w-12 h-12  "
+              src={ReactLogo}
+            />
           ) : (
             <a
               href="#"
-              onClick={() => setActiveTaskCreation(true)}
-              className="p-2 border border-slate-200 rounded-md inline-flex space-x-1 items-center hover:bg-slate-200">
+              onClick={() => setActiveTaskCreation()}
+              className="p-2  rounded-md inline-flex space-x-1 items-center hover:bg-slate-200">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"
