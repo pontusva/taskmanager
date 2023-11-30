@@ -11,10 +11,11 @@ CREATE TABLE Task (
     taskID SERIAL PRIMARY KEY,
     taskName VARCHAR(100) NOT NULL,
     taskDescription VARCHAR(100) NOT NULL,
+    taskCategory VARCHAR(100) NOT NULL,
     taskStatus VARCHAR(100),
     taskPriority VARCHAR(100),
-    taskDueDate VARCHAR(100),
-    taskCreatedDate VARCHAR(100) NOT NULL
+    taskDueDate DATE,
+    taskCreatedDate DATE NOT NULL DEFAULT CURRENT_DATE
 );
 
 CREATE TABLE Organization (
