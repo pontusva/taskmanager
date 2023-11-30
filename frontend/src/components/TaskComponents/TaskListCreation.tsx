@@ -1,14 +1,20 @@
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import Select from 'react-select';
 
-type taskPriority = 'normal' | 'high' | 'urgent';
+type taskPriority = 'normal' | 'high' | 'urgent' | 'value';
 type category = 'bug' | 'update' | 'feature';
 interface Inputs {
   taskName: string;
-  taskPriority: taskPriority;
+  taskPriority: {
+    value: taskPriority;
+    label: string;
+  };
   assign: string;
-  category: category;
-  description: string;
+  category: {
+    value: category;
+    label: string;
+  };
+  taskDescription: string;
   createdBy: string;
 }
 
@@ -24,7 +30,28 @@ const TaskListCreation = () => {
   });
 
   const onSubmit: SubmitHandler<Inputs> = async data => {
-    console.log(data);
+    const { taskName, taskPriority, category, taskDescription } = data;
+    console.log({
+      taskName,
+      taskPriority: data.taskPriority.value,
+      category,
+      taskDescription,
+    });
+    const response = await fetch('http://localhost:8000/tasks/create-task', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        taskName,
+        taskPriority: taskPriority.value,
+        taskCategory: category.value,
+        taskDescription,
+        createdBy: '60f0b0b3e6b3c2a8c8f1b3b5',
+      }),
+    });
+    const result = await response.json();
+    console.log(result);
     reset();
   };
   return (
@@ -117,8 +144,8 @@ const TaskListCreation = () => {
 
               <div className="md:col-span-2">
                 <textarea
-                  {...register('description', { required: true })}
-                  name="description"
+                  {...register('taskDescription', { required: true })}
+                  name="taskDescription"
                   rows={4}
                   cols={1}
                   placeholder="Enter task description"
