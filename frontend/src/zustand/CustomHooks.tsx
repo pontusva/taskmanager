@@ -6,9 +6,10 @@ interface TaskListState {
   activeTaskCreationChange: () => any;
 }
 
-type Userid = {
+type UserId = {
   userid: number | null;
   updateUserId: (userid: number | null) => void;
+  removeUserId: () => void;
 };
 
 export const useTaskListStore = create<TaskListState>()(
@@ -26,7 +27,7 @@ export const useTaskListStore = create<TaskListState>()(
   )
 );
 
-export const userIdStore = create<Userid>()(
+export const userIdStore = create<UserId>()(
   persist(
     set => ({
       userid: null,
