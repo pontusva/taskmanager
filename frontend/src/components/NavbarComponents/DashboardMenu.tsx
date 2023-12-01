@@ -4,7 +4,6 @@ import { Dispatch, SetStateAction } from 'react';
 interface Props {
   sidebarOpen: boolean;
   setSidebarOpen: Dispatch<SetStateAction<boolean>>;
-  activeTaskTab: boolean;
   setActiveTaskTab: Dispatch<SetStateAction<boolean>>;
 }
 
