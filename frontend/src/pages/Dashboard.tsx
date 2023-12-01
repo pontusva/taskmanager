@@ -4,19 +4,22 @@ import DashboardMenu from '../components/NavbarComponents/DashboardMenu';
 import TaskListLayout from '../components/TaskComponents/TaskListLayout';
 import TaskListNavigation from '../components/TaskComponents/TaskListNavigation';
 import TaskListCreation from '../components/TaskComponents/TaskListCreation';
-import { useBearStore } from '../zustand/TaskLayoutHook';
+import { useTaskListStore, userIdStore } from '../zustand/CustomHooks';
 import clsx from 'clsx';
 
 const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeTaskTab, setActiveTaskTab] = useState(false);
 
-  const activeTaskCreation = useBearStore(state => state.activeTaskCreation);
-
-  const setActiveTaskCreation = useBearStore(
+  const activeTaskCreation = useTaskListStore(
+    state => state.activeTaskCreation
+  );
+  const setActiveTaskCreation = useTaskListStore(
     state => state.activeTaskCreationChange
   );
 
+  const userid = userIdStore(state => state.userid);
+  console.log({ userid });
   return (
     <>
       <DashboardMenu
