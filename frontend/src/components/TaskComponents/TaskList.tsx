@@ -1,29 +1,16 @@
 import { useEffect } from 'react';
 import { taskListArrayStore } from '../../zustand/CustomHooks';
-import { useState } from 'react';
-import { createWithEqualityFn } from 'zustand/traditional';
 import clsx from 'clsx';
-
-interface Task {
-  taskname: string;
-  taskdescription: string;
-  category: string;
-  createdby: string;
-  taskcreateddate: string;
-  taskid: number;
-  taskpriority: string;
-  taskstatus: string;
-}
+import { useShallow } from 'zustand/react/shallow';
 
 const TaskList = () => {
-  // const taskList = taskListStore();
   const taskListArray = taskListArrayStore(state => state.updateTaskListArray);
-
-  const taskListComplete = taskListArrayStore(state =>
-    state.tasks.filter(task => task.taskstatus === 'true')
+  const taskListComplete = taskListArrayStore(
+    useShallow(task => task.tasks.filter(task => task.taskstatus === 'true'))
   );
-  const taskListNotComplete = taskListArrayStore(state =>
-    state.tasks.filter(task => task.taskstatus !== 'true')
+
+  const taskListNotComplete = taskListArrayStore(
+    useShallow(task => task.tasks.filter(task => task.taskstatus !== 'true'))
   );
 
   const handleGetTasks = async () => {
@@ -45,8 +32,6 @@ const TaskList = () => {
       }),
     });
     await response.json();
-
-    handleGetTasks();
   };
 
   useEffect(() => {

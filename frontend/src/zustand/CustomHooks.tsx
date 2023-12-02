@@ -17,10 +17,21 @@ type TaskList = {
   updateTaskListState: () => void;
 };
 
-interface TaskListA {
-  tasks: any[];
+interface Task {
+  taskname: string;
+  taskdescription: string;
+  category: string;
+  createdby: string;
+  taskcreateddate: string;
+  taskid: number;
+  taskpriority: string;
+  taskstatus: string;
+}
 
-  updateTaskListArray: (tasks: any, state?: any) => void;
+interface TaskListA {
+  tasks: Task[];
+
+  updateTaskListArray: (tasks: Task[]) => void;
 }
 
 export const useTaskListStore = create<TaskListState>()(
