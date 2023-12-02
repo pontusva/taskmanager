@@ -21,7 +21,7 @@ const TaskList = () => {
     taskListArray(result);
   };
 
-  const handleTaskDone = async (taskid?: number, done?: any) => {
+  const handleTaskDone = async (taskid?: number, done?: string) => {
     const response = await fetch('http://localhost:8000/tasks/update-task', {
       method: 'PUT',
       headers: {

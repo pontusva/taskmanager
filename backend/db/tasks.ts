@@ -39,7 +39,10 @@ taskRouter.post('/create-task', async (req, res) => {
 });
 
 taskRouter.put('/update-task', async (req, res) => {
-  const { taskStatus, taskId } = req.body;
+  const { taskStatus, taskId } = req.body as {
+    taskStatus: string;
+    taskId: string;
+  };
 
   const values = [taskStatus, taskId];
   try {
@@ -54,7 +57,7 @@ taskRouter.put('/update-task', async (req, res) => {
 });
 
 taskRouter.delete('/delete-task', async (req, res) => {
-  const { taskId } = req.body;
+  const { taskId } = req.body as { taskId: string };
 
   const values = [taskId];
   try {

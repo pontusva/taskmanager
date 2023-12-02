@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware';
 
 interface TaskListState {
   activeTaskCreation: boolean;
-  activeTaskCreationChange: () => any;
+  activeTaskCreationChange: () => void;
 }
 
 type UserId = {
@@ -28,7 +28,7 @@ interface Task {
   taskstatus: string;
 }
 
-interface TaskListA {
+interface TaskListArray {
   tasks: Task[];
 
   updateTaskListArray: (tasks: Task[]) => void;
@@ -70,7 +70,7 @@ export const taskListStore = create<TaskList>()(set => ({
     })),
 }));
 
-export const taskListArrayStore = create<TaskListA>()(set => ({
+export const taskListArrayStore = create<TaskListArray>()(set => ({
   tasks: [],
   updateTaskListArray: tasks =>
     set(() => ({

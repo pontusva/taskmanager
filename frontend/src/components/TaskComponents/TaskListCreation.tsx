@@ -94,13 +94,11 @@ const TaskListCreation = () => {
                       </label>
                       <Select
                         {...field}
-                        options={
-                          [
-                            { value: 'normal', label: 'Normal' },
-                            { value: 'high', label: 'High' },
-                            { value: 'urgent', label: 'Urgent' },
-                          ] as any
-                        }
+                        options={[
+                          { value: 'normal', label: 'Normal' },
+                          { value: 'high', label: 'High' },
+                          { value: 'urgent', label: 'Urgent' },
+                        ]}
                       />
                       {errors.taskPriority && (
                         <span className="text-red-400 absolute right-10">
@@ -124,13 +122,11 @@ const TaskListCreation = () => {
                       </label>
                       <Select
                         {...field}
-                        options={
-                          [
-                            { value: 'bug', label: 'Bug' },
-                            { value: 'update', label: 'Update' },
-                            { value: 'feature', label: 'Feature' },
-                          ] as any
-                        }
+                        options={[
+                          { value: 'bug', label: 'Bug' },
+                          { value: 'update', label: 'Update' },
+                          { value: 'feature', label: 'Feature' },
+                        ]}
                       />
                       {errors.category && (
                         <span className="text-red-400 absolute right-10">

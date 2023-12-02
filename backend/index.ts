@@ -4,7 +4,9 @@ import dotenv from 'dotenv';
 import express from 'express';
 import router from './db/baseUserActions';
 import taskRouter from './db/tasks';
-const PORT = 8000;
+
+const PORT: number = 8000;
+
 dotenv.config();
 
 const app = express();
