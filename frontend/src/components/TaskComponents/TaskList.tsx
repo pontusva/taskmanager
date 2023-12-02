@@ -36,6 +36,22 @@ const TaskList = () => {
     handleGetTasks();
   };
 
+  const handleTaskDelete = async (taskid?: number) => {
+    console.log(taskid);
+    const response = await fetch('http://localhost:8000/tasks/delete-task', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        taskId: taskid,
+      }),
+    });
+    const result = await response.json();
+    console.log(result);
+    handleGetTasks();
+  };
+
   useEffect(() => {
     handleGetTasks();
   }, []);
@@ -82,7 +98,7 @@ const TaskList = () => {
                             {task.taskname}
                           </p>
                         </div>
-                        <div>
+                        <div onClick={() => handleTaskDelete(taskId)}>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -145,7 +161,7 @@ const TaskList = () => {
                             {task.taskname}
                           </p>
                         </div>
-                        <div>
+                        <div onClick={() => handleTaskDelete(taskId)}>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"

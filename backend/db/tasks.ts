@@ -53,4 +53,16 @@ taskRouter.put('/update-task', async (req, res) => {
   }
 });
 
+taskRouter.delete('/delete-task', async (req, res) => {
+  const { taskId } = req.body;
+
+  const values = [taskId];
+  try {
+    const response = await client.query(query.tasks.deleteTask.text, values);
+    res.json(response.rows);
+  } catch (err) {
+    res.json(err);
+  }
+});
+
 export default taskRouter;
