@@ -15,7 +15,13 @@ taskRouter.get('/get-tasks', async (req, res) => {
 
 taskRouter.post('/create-task', async (req, res) => {
   const { taskName, taskDescription, taskPriority, taskCategory, createdBy } =
-    req.body;
+    req.body as {
+      taskName: string;
+      taskDescription: string;
+      taskPriority: string;
+      taskCategory: string;
+      createdBy: string;
+    };
 
   const values = [
     taskName,
@@ -26,6 +32,21 @@ taskRouter.post('/create-task', async (req, res) => {
   ];
   try {
     const response = await client.query(query.tasks.createTask.text, values);
+    res.json(response.rows);
+  } catch (err) {
+    res.json(err);
+  }
+});
+
+taskRouter.put('/update-task', async (req, res) => {
+  const { taskStatus, taskId } = req.body;
+
+  const values = [taskStatus, taskId];
+  try {
+    const response = await client.query(
+      query.tasks.updateTaskStatus.text,
+      values
+    );
     res.json(response.rows);
   } catch (err) {
     res.json(err);

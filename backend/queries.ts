@@ -16,6 +16,9 @@ export const query = {
     updateTask: {
       text: 'UPDATE Tasks SET taskName = $1, taskDescription = $2, taskDeadline = $3, taskPriority = $4, taskStatus = $5 WHERE Tasks.taskId = $6 RETURNING *;',
     },
+    updateTaskStatus: {
+      text: 'UPDATE Task SET taskStatus = $1 WHERE Task.taskId = $2 RETURNING *;',
+    },
     deleteTask: {
       text: 'DELETE FROM Tasks WHERE Tasks.taskId = $1 RETURNING *;',
     },
