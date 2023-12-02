@@ -17,6 +17,12 @@ type TaskList = {
   updateTaskListState: () => void;
 };
 
+interface TaskListA {
+  tasks: any[];
+
+  updateTaskListArray: (tasks: any, state?: any) => void;
+}
+
 export const useTaskListStore = create<TaskListState>()(
   persist(
     set => ({
@@ -50,5 +56,13 @@ export const taskListStore = create<TaskList>()(set => ({
   updateTaskListState: () =>
     set(state => ({
       taskList: !state.taskList,
+    })),
+}));
+
+export const taskListArrayStore = create<TaskListA>()(set => ({
+  tasks: [],
+  updateTaskListArray: tasks =>
+    set(() => ({
+      tasks,
     })),
 }));
