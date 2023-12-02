@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 import ReactLogo from '../../../assets/task-svgrepo-com.svg';
+import { taskListStore } from '../../zustand/CustomHooks';
 interface Props {
   setActiveTaskTab: Dispatch<SetStateAction<boolean>>;
   setActiveTaskCreation: () => void;
@@ -11,6 +12,7 @@ const TaskListNavigation = ({
   setActiveTaskCreation,
   activeTaskCreation,
 }: Props) => {
+  const toggleTaskList = taskListStore(state => state.updateTaskListState);
   return (
     <>
       <div className="flex space-x-2 items-center">
@@ -36,7 +38,10 @@ const TaskListNavigation = ({
           ) : (
             <a
               href="#"
-              onClick={() => setActiveTaskCreation()}
+              onClick={() => {
+                setActiveTaskCreation();
+                toggleTaskList();
+              }}
               className="p-2  rounded-md inline-flex space-x-1 items-center hover:bg-slate-200">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

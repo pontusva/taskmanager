@@ -4,6 +4,15 @@ import { query } from '../queries';
 
 const taskRouter: Router = express.Router();
 
+taskRouter.get('/get-tasks', async (req, res) => {
+  try {
+    const response = await client.query(query.tasks.getTasks.text);
+    res.json(response.rows);
+  } catch (err) {
+    res.json(err);
+  }
+});
+
 taskRouter.post('/create-task', async (req, res) => {
   const { taskName, taskDescription, taskPriority, taskCategory, createdBy } =
     req.body;

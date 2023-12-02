@@ -12,6 +12,11 @@ type UserId = {
   removeUserId: () => void;
 };
 
+type TaskList = {
+  taskList: boolean;
+  updateTaskListState: () => void;
+};
+
 export const useTaskListStore = create<TaskListState>()(
   persist(
     set => ({
@@ -39,3 +44,11 @@ export const userIdStore = create<UserId>()(
     }
   )
 );
+
+export const taskListStore = create<TaskList>()(set => ({
+  taskList: false,
+  updateTaskListState: () =>
+    set(state => ({
+      taskList: !state.taskList,
+    })),
+}));
