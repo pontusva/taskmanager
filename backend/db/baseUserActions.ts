@@ -12,7 +12,7 @@ router.post('/plain-text-password-register', async (req, res) => {
 
   const values = [username, email, password, firstName, lastName];
   try {
-    const response = await client.query(
+    const response: QueryResult<QueryResultRow> = await client.query(
       query.registerUserPlainTextPassword.text,
       values
     );

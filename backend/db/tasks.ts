@@ -1,12 +1,15 @@
 import { client } from '../index';
 import express, { Router } from 'express';
 import { query } from '../queries';
+import { QueryResult, QueryResultRow } from 'pg';
 
 const taskRouter: Router = express.Router();
 
 taskRouter.get('/get-tasks', async (req, res) => {
   try {
-    const response = await client.query(query.tasks.getTasks.text);
+    const response: QueryResult<QueryResultRow> = await client.query(
+      query.tasks.getTasks.text
+    );
     res.json(response.rows);
   } catch (err) {
     res.json(err);
@@ -31,7 +34,10 @@ taskRouter.post('/create-task', async (req, res) => {
     createdBy,
   ];
   try {
-    const response = await client.query(query.tasks.createTask.text, values);
+    const response: QueryResult<QueryResultRow> = await client.query(
+      query.tasks.createTask.text,
+      values
+    );
     res.json(response.rows);
   } catch (err) {
     res.json(err);
@@ -46,7 +52,7 @@ taskRouter.put('/update-task', async (req, res) => {
 
   const values = [taskStatus, taskId];
   try {
-    const response = await client.query(
+    const response: QueryResult<QueryResultRow> = await client.query(
       query.tasks.updateTaskStatus.text,
       values
     );
@@ -61,7 +67,10 @@ taskRouter.delete('/delete-task', async (req, res) => {
 
   const values = [taskId];
   try {
-    const response = await client.query(query.tasks.deleteTask.text, values);
+    const response: QueryResult<QueryResultRow> = await client.query(
+      query.tasks.deleteTask.text,
+      values
+    );
     res.json(response.rows);
   } catch (err) {
     res.json(err);
