@@ -2,21 +2,43 @@ import { useEffect } from 'react';
 import { taskListStore } from '../../zustand/CustomHooks';
 import { useState } from 'react';
 
+interface Task {
+  taskname: string;
+  taskdescription: string;
+  category: string;
+  createdby: string;
+  taskcreateddate: string;
+  taskid: number;
+  taskpriority: string;
+}
+
 const TaskList = () => {
   const taskList = taskListStore(state => state.taskList);
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [taskIsDone, setTaskIsDone] = useState<boolean>(false);
 
   const handleGetTasks = async () => {
     const response = await fetch('http://localhost:8000/tasks/get-tasks');
     const result = await response.json();
-
     setTasks(result);
+  };
+
+  const handleTaskDone = async (taskid: number) => {
+    const response = await fetch('http://localhost:8000/tasks/update-task', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        taskid,
+      }),
+    });
   };
 
   useEffect(() => {
     taskList && handleGetTasks();
-  }, [taskList]);
-  console.log(tasks);
+  }, []);
+
   return (
     <>
       <body className="antialiased relative w-screen   bg-slate-200 text-slate-700 ">
@@ -27,24 +49,46 @@ const TaskList = () => {
               className="flex items-center border-b border-slate-200 py-3 px-2 border-l-4  border-l-transparent">
               <div className="flex flex-col">
                 {tasks.map(task => {
+                  const taskId = task.taskid;
                   return (
                     <div className="flex">
-                      <svg
+                      {taskId && taskIsDone && (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          className="w-6 h-6 text-slate-500">
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M4.5 12.75l6 6 9-13.5"
+                          />
+                        </svg>
+                      )}
+
+                      {/* <svg
                         xmlns="http://www.w3.org/2000/svg"
+                        onClick={() => handleTaskDone(task.taskid)}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke-width="1.5"
                         stroke="currentColor"
-                        className="w-6 h-6 text-slate-500">
+                        className="w-6 h-6 text-slate-500 hover:text-indigo-600 hover:cursor-pointer">
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
-                          d="M4.5 12.75l6 6 9-13.5"
+                          d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                         />
-                      </svg>
+                      </svg> */}
+
                       <div className="flex w-80 justify-between">
                         <div className="text-slate-500 line-through">
-                          {task.taskname}
+                          <p onClick={() => setTaskIsDone(!taskIsDone)}>
+                            {task.taskname}
+                          </p>
+                          {task.taskid}
                         </div>
                         <div>
                           <svg
