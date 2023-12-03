@@ -58,7 +58,7 @@ const TaskList = () => {
 
   return (
     <div className="antialiased relative w-screen   bg-slate-200 text-slate-700 ">
-      <div className="   p-10 bg-slate-50 w-full  rounded-xl shadow shadow-slate-300">
+      <div className=" px-10 bg-slate-50 w-full  rounded-xl shadow shadow-slate-300">
         <div id="tasks" className="my-5">
           Complete
           <div

@@ -6,12 +6,17 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Login from './pages/LoginPage.tsx';
 import Register from './pages/Register.tsx';
 import Dashboard from './pages/Dashboard.tsx';
+import TaskManagement from './pages/TaskManagement.tsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
     children: [
+      {
+        path: '/',
+        element: <Dashboard />,
+      },
       {
         path: 'register',
         element: <Register />,
@@ -21,8 +26,8 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: '/',
-        element: <Dashboard />,
+        path: 'tasks',
+        element: <TaskManagement />,
       },
     ],
   },
