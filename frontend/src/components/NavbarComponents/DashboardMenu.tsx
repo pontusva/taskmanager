@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import { Dispatch, SetStateAction } from 'react';
-import { taskListStore } from '../../zustand/CustomHooks';
 import { useNavigate } from 'react-router-dom';
 interface Props {
   sidebarOpen: boolean;

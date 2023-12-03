@@ -2,23 +2,11 @@
 
 To do app.
 
-## Technologies
+## About
 
-### Typescript
+Första webbsidan kan man se vilka tasks som är tillgängliga. För att skapa en ny task behöver man klicka på plusset brevid titeln.
 
-React
-Express
-
-### Database
-
-Postgres
-pg
-
-### Form handling
-
-React hook form
-
-## SQL
+Tabellerna finns i sql-mappen. De bör vara korrekta, om jag inte missat att uppdatera.
 
 ## Thanks to
 
