@@ -8,9 +8,8 @@ import TaskList from './components/TaskComponents/TaskList';
 import TaskListCreation from './components/TaskComponents/TaskListCreation';
 
 const Navigation = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  // const activeTaskTab = useTaskListStore(state => state.activeTaskCreation);
-  const [activeTaskTab, setActiveTaskTab] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+  const [activeTaskTab, setActiveTaskTab] = useState<boolean>(false);
 
   const activeTaskCreation = useTaskListStore(
     state => state.activeTaskCreation
@@ -37,7 +36,6 @@ const Navigation = () => {
           <div className="absolute px-7 top-40">
             <TaskListNavigation
               setActiveTaskCreation={setActiveTaskCreation}
-              setActiveTaskTab={setActiveTaskTab}
               activeTaskCreation={activeTaskCreation}
             />
           </div>

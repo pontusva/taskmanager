@@ -2,13 +2,11 @@ import { Dispatch, SetStateAction } from 'react';
 import ReactLogo from '../../../assets/task-svgrepo-com.svg';
 import { taskListStore } from '../../zustand/CustomHooks';
 interface Props {
-  setActiveTaskTab: Dispatch<SetStateAction<boolean>>;
   setActiveTaskCreation: () => void;
   activeTaskCreation: boolean;
 }
 
 const TaskListNavigation = ({
-  setActiveTaskTab,
   setActiveTaskCreation,
   activeTaskCreation,
 }: Props) => {

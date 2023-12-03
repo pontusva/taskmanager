@@ -1,9 +1,4 @@
-import { useState } from 'react';
-import { useTaskListStore, userIdStore } from '../zustand/CustomHooks';
-
 const Dashboard = () => {
-  const userid = userIdStore(state => state.userid);
-  console.log({ userid });
   return (
     <>
       <div className="min-h-screen transition-all duration-1000 delay-300  bg-gray-50/50">
