@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Dashboard />,
+        element: <TaskManagement />,
       },
       {
         path: 'register',
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'tasks',
-        element: <TaskManagement />,
+        element: <Dashboard />,
       },
     ],
   },
