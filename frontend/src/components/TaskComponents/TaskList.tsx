@@ -57,8 +57,8 @@ const TaskList = () => {
   }, []);
 
   return (
-    <div className="antialiased relative w-screen   bg-slate-200 text-slate-700 ">
-      <div className=" px-10 bg-slate-50 w-full  rounded-xl shadow shadow-slate-300">
+    <div className="antialiased relative   bg-slate-200 text-slate-700 ">
+      <div className=" px-10 bg-slate-50  rounded-xl shadow shadow-slate-300">
         <div id="tasks" className="my-5">
           Complete
           <div
@@ -69,7 +69,7 @@ const TaskList = () => {
                 const taskId = task.taskid;
                 return (
                   <>
-                    <div key={task.taskid + 1} className="flex">
+                    <div key={task.taskid + 1} className="flex ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -85,7 +85,7 @@ const TaskList = () => {
                       </svg>
                       {/* } */}
 
-                      <div className="flex w-80 justify-between">
+                      <div className="flex w-72 justify-between">
                         <div
                           className={clsx(
                             task.taskstatus === 'true' && 'line-through',
@@ -125,12 +125,12 @@ const TaskList = () => {
           In Progress
           <div
             id="task"
-            className="flex items-center border-b border-slate-200 py-3 px-2 border-l-4  border-l-transparent">
+            className="flex  border items-center border-b border-slate-200 py-3 px-2 border-l-4  border-l-transparent">
             <div className="flex flex-col">
               {taskListNotComplete.map(task => {
                 const taskId = task.taskid;
                 return (
-                  <div key={task.taskid} className="flex">
+                  <div key={task.taskid} className="flex w-full">
                     {/* {task.taskstatus !== 'true' && ( */}
                     <>
                       <svg
@@ -161,7 +161,9 @@ const TaskList = () => {
                             {task.taskname}
                           </p>
                         </div>
-                        <div onClick={() => handleTaskDelete(taskId)}>
+                        <div
+                          className=""
+                          onClick={() => handleTaskDelete(taskId)}>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
