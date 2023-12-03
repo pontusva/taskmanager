@@ -28,7 +28,7 @@ const TaskListNavigation = ({
           {activeTaskCreation ? (
             <img
               onClick={() => setActiveTaskCreation()}
-              className="w-12 h-12  "
+              className="w-12 h-12 hover:cursor-pointer"
               src={ReactLogo}
             />
           ) : (
@@ -38,7 +38,7 @@ const TaskListNavigation = ({
                 setActiveTaskCreation();
                 toggleTaskList();
               }}
-              className="p-2  rounded-md inline-flex space-x-1 items-center hover:bg-slate-200">
+              className="p-2 rounded-md inline-flex space-x-1 items-center hover:bg-slate-200">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"

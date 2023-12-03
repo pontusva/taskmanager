@@ -4,14 +4,9 @@ import { taskListStore } from '../../zustand/CustomHooks';
 interface Props {
   sidebarOpen: boolean;
   setSidebarOpen: Dispatch<SetStateAction<boolean>>;
-  setActiveTaskTab: Dispatch<SetStateAction<boolean>>;
 }
 
-const DashboardMenu = ({
-  sidebarOpen,
-  setSidebarOpen,
-  setActiveTaskTab,
-}: Props) => {
+const DashboardMenu = ({ sidebarOpen, setSidebarOpen }: Props) => {
   const toggleTaskList = taskListStore(state => state.updateTaskListState);
 
   return (
@@ -95,12 +90,7 @@ const DashboardMenu = ({
             </a>
           </li>
           <li>
-            <a
-              onClick={() => {
-                setActiveTaskTab(true), setSidebarOpen(false);
-              }}
-              className=""
-              href="#">
+            <a className="" href="#">
               <button
                 onClick={() => toggleTaskList()}
                 className="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"

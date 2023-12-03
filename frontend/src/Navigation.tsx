@@ -9,40 +9,13 @@ import TaskListCreation from './components/TaskComponents/TaskListCreation';
 
 const Navigation = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
-  const [activeTaskTab, setActiveTaskTab] = useState<boolean>(false);
-
-  const activeTaskCreation = useTaskListStore(
-    state => state.activeTaskCreation
-  );
-  const setActiveTaskCreation = useTaskListStore(
-    state => state.activeTaskCreationChange
-  );
 
   return (
     <>
       <DashboardMenu
         sidebarOpen={sidebarOpen}
-        setActiveTaskTab={setActiveTaskTab}
         setSidebarOpen={setSidebarOpen}
       />
-      <div
-        className={clsx(
-          activeTaskTab
-            ? 'visible transition-all bg-white opacity-100 duration-1000 delay-300'
-            : `absolute z-50 opacity-0 hidden transition-all duration-1000`,
-          'border h-screen flex justify-center items-center'
-        )}>
-        <TaskListLayout>
-          <div className="absolute px-7 top-40">
-            <TaskListNavigation
-              setActiveTaskCreation={setActiveTaskCreation}
-              activeTaskCreation={activeTaskCreation}
-            />
-          </div>
-          {!activeTaskCreation && <TaskList />}
-          {activeTaskCreation && <TaskListCreation />}
-        </TaskListLayout>
-      </div>
       <nav className="block z-10 w-full max-w-full relative  bg-transparent text-white shadow-none rounded-xl transition-all px-0 py-1">
         <div className="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center">
           <div className="flex items-center">
