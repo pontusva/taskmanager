@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
 import ReactLogo from '../../../assets/task-svgrepo-com.svg';
 import { taskListStore } from '../../zustand/CustomHooks';
 interface Props {
