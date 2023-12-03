@@ -59,7 +59,7 @@ const TaskListCreation = () => {
   };
   return (
     <div className="lg:max-w-lg w-screen lg:ms-auto mx-auto text-center ">
-      <div className="py-8 mt-10 px-7  rounded-md bg-white">
+      <div className="  px-7  rounded-md bg-white">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
             <div className="flex flex-col">

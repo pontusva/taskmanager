@@ -19,7 +19,7 @@ const TaskListNavigation = ({
             {activeTaskCreation ? (
               <p className="text-slate-500 ">create a new task</p>
             ) : (
-              <p className="text-slate-500 ">See tasks</p>
+              <p className="text-slate-500 ">Tasks</p>
             )}
           </div>
         </div>
