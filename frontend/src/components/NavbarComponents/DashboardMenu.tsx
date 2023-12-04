@@ -20,7 +20,7 @@ const DashboardMenu = ({ sidebarOpen, setSidebarOpen }: Props) => {
   return (
     <aside
       className={clsx(
-        'bg-gradient-to-br  from-gray-800 to-gray-900 lg:-translate-x-80 fixed inset-0 lg:my-4 lg:ml-4  md:h-[calc(100vh-32px)] lg:w-72  lg:rounded-xl  xl:translate-x-0',
+        'bg-gradient-to-br  from-gray-800 to-gray-900 fixed inset-0 lg:my-4 lg:ml-4  md:h-[calc(100vh-32px)] lg:w-72  lg:rounded-xl  xl:translate-x-0',
         sidebarOpen
           ? 'transition ease-in-in duration-300  z-40 '
           : 'transition-all duration-1000  opacity-0 absolute -z-50'
@@ -32,7 +32,7 @@ const DashboardMenu = ({ sidebarOpen, setSidebarOpen }: Props) => {
           </h6>
         </a>
         <button
-          className="middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-white hover:bg-white/10 active:bg-white/30 absolute right-0 top-0 grid rounded-br-none rounded-tl-none xl:hidden"
+          className="middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-white hover:bg-white/10 active:bg-white/30 absolute right-0 top-0 grid rounded-br-none rounded-tl-none "
           type="button">
           <span
             onClick={() => {
