@@ -1,5 +1,5 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { userIdStore } from '../zustand/CustomHooks';
 
 interface Inputs {
@@ -28,7 +28,7 @@ const Register = () => {
     const loginSuccess = response.ok;
     const result = await response.json();
     updateUserId(result.userResponseRow.userid);
-    loginSuccess && navigate('/dashboard');
+    loginSuccess && navigate('/');
   };
   return (
     <>
@@ -67,7 +67,12 @@ const Register = () => {
                   placeholder="*********"
                 />
               </div>
-              <div className="mt-8 flex justify-center text-lg text-black">
+              <div className="mt-8 flex flex-col justify-center text-lg text-black">
+                <NavLink
+                  className="text-white italic text-center mb-2"
+                  to="/register">
+                  Not registered?
+                </NavLink>
                 <button
                   type="submit"
                   className="rounded-3xl bg-[#9dc8e5] bg-opacity-50 px-10 py-2 text-white shadow-xl backdrop-blur-md transition-colors duration-300 hover:bg-[#051415]">

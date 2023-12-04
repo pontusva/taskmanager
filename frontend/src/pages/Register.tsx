@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 
 interface Inputs {
@@ -22,7 +23,7 @@ const Register = () => {
   } = useForm<Inputs>({
     mode: 'onChange',
   });
-
+  const navigate = useNavigate();
   const onSubmit: SubmitHandler<Inputs> = async data => {
     const passwordConfirmation = data.password === data.confirm;
     const response =
@@ -41,7 +42,7 @@ const Register = () => {
     const result = response && (await response.json());
     console.log(result);
     passwordConfirmation
-      ? toast.success('Successfull registerd', {
+      ? (toast.success('Successfull registerd', {
           position: 'top-center',
           autoClose: 2000,
           hideProgressBar: false,
@@ -50,7 +51,10 @@ const Register = () => {
           draggable: true,
           progress: undefined,
           theme: 'colored',
-        })
+        }),
+        setTimeout(() => {
+          navigate('/login');
+        }, 2000))
       : toast.error('Password not matching', {
           position: 'bottom-center',
           autoClose: 2000,

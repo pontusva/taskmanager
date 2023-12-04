@@ -1,12 +1,15 @@
 import clsx from 'clsx';
 import { Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { userIdStore } from '../../zustand/CustomHooks';
 interface Props {
   sidebarOpen: boolean;
   setSidebarOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 const DashboardMenu = ({ sidebarOpen, setSidebarOpen }: Props) => {
+  const userId = userIdStore(state => state.userid);
+  console.log(userId);
   const navigate = useNavigate();
   return (
     <aside
@@ -26,7 +29,9 @@ const DashboardMenu = ({ sidebarOpen, setSidebarOpen }: Props) => {
           className="middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-white hover:bg-white/10 active:bg-white/30 absolute right-0 top-0 grid rounded-br-none rounded-tl-none xl:hidden"
           type="button">
           <span
-            onClick={() => setSidebarOpen(false)}
+            onClick={() => {
+              setSidebarOpen(false);
+            }}
             className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -49,6 +54,10 @@ const DashboardMenu = ({ sidebarOpen, setSidebarOpen }: Props) => {
           <li>
             <a aria-current="page" className="active" href="#">
               <button
+                onClick={() => {
+                  setSidebarOpen(false);
+                  navigate('/');
+                }}
                 className="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] w-full flex items-center gap-4 px-4 capitalize"
                 type="button">
                 <svg
@@ -67,7 +76,7 @@ const DashboardMenu = ({ sidebarOpen, setSidebarOpen }: Props) => {
             </a>
           </li>
           <li>
-            <a className="" href="#">
+            <a className="">
               <button
                 className="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
                 type="button">
