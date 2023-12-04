@@ -7,10 +7,9 @@ Appen fungerar just nu bäst i mobilläge.
 När projektet körs kommer en login sida att visas. Det går att skapa användare och logga in men är inte nödvändigt för att se hur tasks-sidan fungerar.
 
 Det går att navigera direkt till tasks genom att klicka på hamburgar menyn.
+Klicka på en task och den kommer toggla mellan in progress och complete.
 
-Första webbsidan kan man se vilka tasks som är tillgängliga. För att skapa en ny task behöver man klicka på plusset brevid titeln.
-
-Klicka på en task och den kommer att byta mellan completed och in progress.
+För att lägga till en task klicka på plusset brevid rubriken.
 
 Tabellerna finns i sql-mappen. De bör vara korrekta, om jag inte missat att uppdatera.
 
