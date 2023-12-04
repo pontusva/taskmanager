@@ -50,6 +50,7 @@ const Register = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="flex justify-center mb-4 text-lg">
                 <input
+                  id="username"
                   {...register('userName', { required: true })}
                   className=" rounded-3xl border-none bg-opacity-50 md:px-6 md:py px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md"
                   type="text"
@@ -60,6 +61,7 @@ const Register = () => {
 
               <div className="flex justify-center mb-4 text-lg">
                 <input
+                  id="password"
                   {...register('password', { required: true })}
                   className="rounded-3xl border-nonebg-opacity-50  md:px-0 md:py px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md"
                   type="Password"
@@ -74,6 +76,7 @@ const Register = () => {
                   Not registered?
                 </NavLink>
                 <button
+                  id="login"
                   type="submit"
                   className="rounded-3xl bg-[#9dc8e5] bg-opacity-50 px-10 py-2 text-white shadow-xl backdrop-blur-md transition-colors duration-300 hover:bg-[#051415]">
                   Login
