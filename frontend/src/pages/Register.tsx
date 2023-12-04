@@ -53,7 +53,7 @@ const Register = () => {
           theme: 'colored',
         }),
         setTimeout(() => {
-          navigate('/login');
+          navigate('/');
         }, 2000))
       : toast.error('Password not matching', {
           position: 'bottom-center',

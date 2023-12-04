@@ -28,7 +28,7 @@ const Register = () => {
     const loginSuccess = response.ok;
     const result = await response.json();
     updateUserId(result.userResponseRow.userid);
-    loginSuccess && navigate('/');
+    loginSuccess && navigate('/dashboard');
   };
   return (
     <>
