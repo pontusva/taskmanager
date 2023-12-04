@@ -64,7 +64,7 @@ const TaskList = () => {
           <div
             id="task"
             className="flex items-center border-b border-slate-200 py-3 px-2 border-l-4  border-l-transparent">
-            <div className="flex flex-col">
+            <div className="flex flex-col ">
               {taskListComplete.map(task => {
                 const taskId = task.taskid;
                 return (
@@ -92,13 +92,16 @@ const TaskList = () => {
                             'text-slate-500 '
                           )}>
                           <p
+                            className="cursor-pointer"
                             onClick={() => {
                               handleTaskDone(taskId, task.taskstatus);
                             }}>
                             {task.taskname}
                           </p>
                         </div>
-                        <div onClick={() => handleTaskDelete(taskId)}>
+                        <div
+                          className="cursor-pointer"
+                          onClick={() => handleTaskDelete(taskId)}>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -148,13 +151,14 @@ const TaskList = () => {
                             d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                           />
                         </svg>
-                        <div className="flex w-80 justify-between">
+                        <div className="flex  w-72 justify-between">
                           <div
                             className={clsx(
                               task.taskstatus === 'true' && 'line-through',
                               'text-slate-500 '
                             )}>
                             <p
+                              className="cursor-pointer"
                               onClick={() => {
                                 // setTaskIsDone(!taskIsDone),
                                 handleTaskDone(taskId);
@@ -171,7 +175,7 @@ const TaskList = () => {
                               viewBox="0 0 24 24"
                               strokeWidth="1.5"
                               stroke="currentColor"
-                              className="w-4 h-4 text-slate-500 hover:text-slate-700 hover:cursor-pointer">
+                              className="w-4 h-4 cursor-pointer text-slate-500 hover:text-slate-700 hover:cursor-pointer">
                               <path
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
