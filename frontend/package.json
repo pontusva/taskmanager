@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "concurrently \"tailwindcss -i ./src/index.css -o ./dist/index.css --watch\" \"cypress open\" "
   },
   "dependencies": {
     "clsx": "^2.0.0",
@@ -26,6 +27,7 @@
     "@typescript-eslint/parser": "^6.10.0",
     "@vitejs/plugin-react": "^4.2.0",
     "autoprefixer": "^10.4.16",
+    "concurrently": "^8.2.2",
     "cypress": "^13.6.0",
     "eslint": "^8.53.0",
     "eslint-plugin-react-hooks": "^4.6.0",
