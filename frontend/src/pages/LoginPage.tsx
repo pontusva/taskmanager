@@ -17,18 +17,22 @@ const Register = () => {
   const updateUserId = userIdStore(state => state.updateUserId);
 
   const onSubmit: SubmitHandler<Inputs> = async data => {
-    const response = await fetch('http://localhost:8000/user/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        username: data.userName,
-        password: data.password,
-      }),
-    });
-    const loginSuccess = response.ok;
-    const result = await response.json();
-    updateUserId(result.userResponseRow.userid);
-    loginSuccess && navigate('/dashboard');
+    try {
+      const response = await fetch('http://localhost:8000/user/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: data.userName,
+          password: data.password,
+        }),
+      });
+      const result = await response.json();
+      updateUserId(result.userResponseRow.userid);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      navigate('/dashboard');
+    }
   };
   return (
     <>

@@ -29,11 +29,20 @@ describe('Get & Post tasks', () => {
     });
 
     it('fetch tasks', () => {
-      cy.intercept({
+      cy.request('GET', 'localhost:8000/tasks/get-tasks', {
         method: 'GET',
-        url: '/tasks/get-tasks',
-        hostname: 'localhost',
-        port: 8000,
+      });
+    });
+    it('create task', () => {
+      cy.request('POST', 'localhost:8000/tasks/create-task', {
+        method: 'POST',
+        body: {
+          taskName: "cypress, it's working",
+          taskPriority: 'taskPriority.value',
+          taskCategory: 'category.value',
+          taskDescription: 'description.value',
+          createdBy: '60f0b0b3e6b3c2a8c8f1b3b5',
+        },
       });
     });
   });
