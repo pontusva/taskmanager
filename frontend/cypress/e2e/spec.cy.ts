@@ -21,6 +21,7 @@ describe('Successful & Unsuccessul login', () => {
     });
   });
 });
+
 // complete e2e test for tasks
 describe('Get & Post tasks', () => {
   context('720p resolution', () => {
@@ -56,6 +57,15 @@ describe('Get & Post tasks', () => {
 
       cy.get('#task-description').type('cypress, post');
       // cy.get('#submit-task').click(); // Uncomment this line to create a task
+    });
+  });
+});
+
+describe('Component test', () => {
+  context('720p resolution', () => {
+    beforeEach(() => {
+      cy.viewport(390, 844);
+      cy.visit('http://localhost:5173/dashboard');
     });
   });
 });

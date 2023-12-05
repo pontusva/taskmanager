@@ -7,7 +7,7 @@ interface Inputs {
   password: string;
 }
 
-const Register = () => {
+const Login = () => {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm<Inputs>({
     mode: 'onChange',
@@ -94,4 +94,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;
