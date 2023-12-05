@@ -67,6 +67,7 @@ const TaskListCreation = () => {
                 Task name
               </label>
               <input
+                id="task-name"
                 {...register('taskName', { required: true })}
                 type="text"
                 name="taskName"
@@ -93,6 +94,7 @@ const TaskListCreation = () => {
                       Priority
                     </label>
                     <Select
+                      classNamePrefix="react-select"
                       {...field}
                       options={[
                         { value: 'normal', label: 'Normal' },
@@ -121,6 +123,7 @@ const TaskListCreation = () => {
                       Category
                     </label>
                     <Select
+                      classNamePrefix="react-select-category"
                       {...field}
                       options={[
                         { value: 'bug', label: 'Bug' },
@@ -142,6 +145,7 @@ const TaskListCreation = () => {
               <textarea
                 {...register('taskDescription', { required: true })}
                 name="taskDescription"
+                id="task-description"
                 rows={4}
                 cols={1}
                 placeholder="Enter task description"
@@ -150,6 +154,7 @@ const TaskListCreation = () => {
           </div>
           <button
             type="submit"
+            id="submit-task"
             className="w-full mt-6 mb-3 bg-indigo-100 rounded-lg px-4 py-2 text-lg text-gray-800 tracking-wide font-semibold font-sans">
             add new task
           </button>

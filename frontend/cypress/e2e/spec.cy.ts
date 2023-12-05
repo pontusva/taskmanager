@@ -1,3 +1,4 @@
+// e2e test for login
 describe('Successful & Unsuccessul login', () => {
   context('720p resolution', () => {
     beforeEach(() => {
@@ -20,7 +21,7 @@ describe('Successful & Unsuccessul login', () => {
     });
   });
 });
-
+// complete e2e test for tasks
 describe('Get & Post tasks', () => {
   context('720p resolution', () => {
     beforeEach(() => {
@@ -34,16 +35,27 @@ describe('Get & Post tasks', () => {
       });
     });
     it('create task', () => {
-      cy.request('POST', 'localhost:8000/tasks/create-task', {
-        method: 'POST',
-        body: {
-          taskName: "cypress, it's working",
-          taskPriority: 'taskPriority.value',
-          taskCategory: 'category.value',
-          taskDescription: 'description.value',
-          createdBy: '60f0b0b3e6b3c2a8c8f1b3b5',
-        },
-      });
+      cy.get('#create-task').click();
+      cy.get('#task-name').type('cypress, post');
+
+      // Hittade detta på stackoverflow då jag använder
+      // react-select för min dropdown
+      cy.get('.react-select__control')
+        .click()
+        .get('.react-select__menu')
+        .find('.react-select__option')
+        .last()
+        .click();
+
+      cy.get('.react-select-category__control')
+        .click()
+        .get('.react-select-category__menu')
+        .find('.react-select-category__option')
+        .last()
+        .click();
+
+      cy.get('#task-description').type('cypress, post');
+      // cy.get('#submit-task').click(); // Uncomment this line to create a task
     });
   });
 });
