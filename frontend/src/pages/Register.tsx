@@ -45,6 +45,7 @@ const Register = () => {
       ? (toast.success('Successfull registerd', {
           position: 'top-center',
           autoClose: 2000,
+          toastId: 'register',
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -58,6 +59,7 @@ const Register = () => {
       : toast.error('Password not matching', {
           position: 'bottom-center',
           autoClose: 2000,
+          toastId: 'unsuccesful-register',
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: false,
@@ -84,13 +86,15 @@ const Register = () => {
               <input
                 className="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"
                 type="text"
-                id="firstName"
+                id="first-name"
                 placeholder="first name"
                 {...register('firstName', { required: true })}
                 name="firstName"
               />
               {errors.firstName && (
-                <span className="text-red-400">This field is required</span>
+                <span className="text-red-400 required-field">
+                  This field is required
+                </span>
               )}
               <label className="text-gray-800 font-semibold block my-3 text-md">
                 Last name
@@ -98,13 +102,15 @@ const Register = () => {
               <input
                 className="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"
                 type="text"
-                id="lastName"
+                id="last-name"
                 placeholder="last name"
                 {...register('lastName', { required: true })}
                 name="lastName"
               />
               {errors.lastName && (
-                <span className="text-red-400">This field is required</span>
+                <span className="text-red-400 required-field">
+                  This field is required
+                </span>
               )}
               <label className="text-gray-800 font-semibold block my-3 text-md">
                 Username
@@ -118,7 +124,9 @@ const Register = () => {
                 name="username"
               />
               {errors.username && (
-                <span className="text-red-400">This field is required</span>
+                <span className="text-red-400 required-field">
+                  This field is required
+                </span>
               )}
             </div>
             <div>
@@ -134,7 +142,9 @@ const Register = () => {
                 name="email"
               />
               {errors.email && (
-                <span className="text-red-400">This field is required</span>
+                <span className="text-red-400 required-field">
+                  This field is required
+                </span>
               )}
             </div>
             <div>
@@ -158,7 +168,9 @@ const Register = () => {
                 </span>
               ) : (
                 errors.password?.type === 'required' && (
-                  <span className="text-red-400">This field is required</span>
+                  <span className="text-red-400 required-field">
+                    This field is required
+                  </span>
                 )
               )}
             </div>
@@ -170,7 +182,7 @@ const Register = () => {
               <input
                 className="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"
                 type="password"
-                id="confirm"
+                id="confirm-password"
                 placeholder="confirm password"
                 {...register('confirm', { required: true, minLength: 8 })}
                 name="confirm"
@@ -181,12 +193,15 @@ const Register = () => {
                 </span>
               ) : (
                 errors.confirm?.type === 'required' && (
-                  <span className="text-red-400">This field is required</span>
+                  <span className="text-red-400 required-field">
+                    This field is required
+                  </span>
                 )
               )}
             </div>
             <button
               type="submit"
+              id="register-button"
               className={clsx(
                 watch('password') !== '' && watch('confirm') !== ''
                   ? 'bg-indigo-600 mt-6 w-full rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans'
