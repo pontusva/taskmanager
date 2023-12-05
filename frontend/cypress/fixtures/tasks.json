@@ -1,0 +1,32 @@
+[
+  {
+    "taskid": "1",
+    "taskname": "hello@cypress.io",
+    "taskdescription": "Fixtures are a great way to mock data for responses to routes",
+    "taskpriority": "high",
+    "taskstatus": "false",
+    "taskcreateddata": "2020-01-01",
+    "category": "cypress",
+    "createdby": "cypress"
+  },
+  {
+    "taskid": "Using fixtures to represent data",
+    "taskname": "Working with cypress",
+    "taskdescription": "Fixtures are a great way to mock data for responses to routes",
+    "taskpriority": "high",
+    "taskstatus": "false",
+    "taskcreateddata": "2020-01-01",
+    "category": "cypress",
+    "createdby": "cypress"
+  },
+  {
+    "taskid": "Using fixtures to represent data",
+    "taskname": "Working with cypress",
+    "taskdescription": "Fixtures are a great way to mock data for responses to routes",
+    "taskpriority": "high",
+    "taskstatus": "true",
+    "taskcreateddata": "2020-01-01",
+    "category": "cypress",
+    "createdby": "cypress"
+  }
+]

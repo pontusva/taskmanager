@@ -23,7 +23,7 @@ describe('Successful & Unsuccessul login', () => {
 });
 
 // complete e2e test for tasks
-describe('Get & Post tasks', () => {
+describe('Check if task HTTP requests are working', () => {
   context('720p resolution', () => {
     beforeEach(() => {
       cy.viewport(390, 844);
@@ -35,6 +35,7 @@ describe('Get & Post tasks', () => {
         method: 'GET',
       });
     });
+
     it('create task', () => {
       cy.get('#create-task').click();
       cy.get('#task-name').type('cypress, post');
@@ -61,11 +62,26 @@ describe('Get & Post tasks', () => {
   });
 });
 
-describe('Component test', () => {
-  context('720p resolution', () => {
-    beforeEach(() => {
-      cy.viewport(390, 844);
-      cy.visit('http://localhost:5173/dashboard');
-    });
-  });
-});
+// describe('intercept get with mock data', () => {
+//   context('720p resolution', () => {
+//     beforeEach(() => {
+//       cy.viewport(390, 844);
+//       cy.visit('http://localhost:5173/tasks');
+//     });
+
+//     it('renders two cities', () => {
+//       cy.fixture('../fixtures/tasks.json');
+//       cy.intercept(
+//         {
+//           method: 'GET',
+//           url: 'http://localhost:8000/tasks/get-tasks',
+//         },
+//         {
+//           fixture: 'tasks.json',
+//         }
+//       ).as('cities');
+
+//       cy.wait('@cities');
+//     });
+//   });
+// });
