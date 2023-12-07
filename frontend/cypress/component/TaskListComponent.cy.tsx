@@ -8,7 +8,7 @@ describe('intercept with mock data to get tasks', () => {
       cy.viewport(390, 844);
     });
 
-    it('Renders task list', () => {
+    it('Renders task list with mock data', () => {
       cy.intercept(
         {
           method: 'GET',
