@@ -42,7 +42,7 @@ const Register = () => {
     const result = response && (await response.json());
     console.log(result);
     passwordConfirmation
-      ? (toast.success('Successfull registerd', {
+      ? (toast.success('Successfully registered', {
           position: 'top-center',
           autoClose: 2000,
           toastId: 'register',

@@ -29,7 +29,7 @@ describe('NavigationComponent.cy.tsx', () => {
 });
 
 describe('NavigationComponent.cy.tsx', () => {
-  it('Unsuccessful login', () => {
+  it('Unsuccessful login if password mismatch, otherwise successfull', () => {
     cy.mount(
       <Router>
         <Register />
@@ -57,5 +57,8 @@ describe('NavigationComponent.cy.tsx', () => {
       .click()
       .get('#unsuccesful-register')
       .contains('Password not matching');
+    cy.get('#confirm-password').wait(2800).click().clear().type('test1234');
+    cy.get('#register-button').click();
+    cy.get('#register').contains('Successfully registered');
   });
 });

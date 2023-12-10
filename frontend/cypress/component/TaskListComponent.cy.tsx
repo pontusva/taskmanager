@@ -84,7 +84,6 @@ describe('POST request for creating a new tasks', () => {
         .click();
       cy.get('#task-description').type('cypress, post');
       cy.get('#get-tasks').click();
-      // cy.request('POST', 'http://localhost:8000/tasks/get-tasks', {})
     });
   });
 });

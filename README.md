@@ -14,6 +14,10 @@ Klicka på en task och den kommer att byta mellan completed och in progress.
 
 Tabellerna finns i sql-mappen. De bör vara korrekta, om jag inte missat att uppdatera.
 
+## Testing
+
+För att få med komponentens styling i komponenttesterna så kan kan kommandot `npm run test` köras när man står i frontendmappen.
+
 ## Thanks to
 
 Register background Photo by <a href="https://unsplash.com/@shot__seeker?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Mario Esposito</a> on <a href="https://unsplash.com/photos/a-plane-flying-in-the-sky-over-a-forest-3lembc75Y5o?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>

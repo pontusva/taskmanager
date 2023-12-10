@@ -23,7 +23,7 @@ describe('Successful & Unsuccessul login', () => {
 });
 
 // complete e2e test for tasks
-describe('Check if task HTTP requests are working', () => {
+describe('Check if task HTTP requests are working. (complete e2e test for tasks)', () => {
   context('720p resolution', () => {
     beforeEach(() => {
       cy.viewport(390, 844);
@@ -31,7 +31,7 @@ describe('Check if task HTTP requests are working', () => {
     });
 
     it('fetch tasks', () => {
-      cy.request('GET', 'localhost:8000/tasks/get-tasks', {
+      cy.request('GET', 'http://localhost:8000/tasks/get-tasks', {
         method: 'GET',
       });
     });
@@ -57,31 +57,30 @@ describe('Check if task HTTP requests are working', () => {
         .click();
 
       cy.get('#task-description').type('cypress, post');
-      // cy.get('#submit-task').click(); // Uncomment this line to create a task
+      cy.get('#submit-task').click(); // Uncomment this line to create a task
     });
   });
 });
 
-// describe('intercept get with mock data', () => {
-//   context('720p resolution', () => {
-//     beforeEach(() => {
-//       cy.viewport(390, 844);
-//       cy.visit('http://localhost:5173/tasks');
-//     });
+// integration test
+describe('integration test', () => {
+  context('720p resolution', () => {
+    beforeEach(() => {
+      cy.viewport(390, 844);
+      cy.visit('http://localhost:5173/tasks');
+    });
+    it('Request Tasks', () => {
+      cy.request('get', 'http://localhost:8000/tasks/get-tasks');
+    });
 
-//     it('renders two cities', () => {
-//       cy.fixture('../fixtures/tasks.json');
-//       cy.intercept(
-//         {
-//           method: 'GET',
-//           url: 'http://localhost:8000/tasks/get-tasks',
-//         },
-//         {
-//           fixture: 'tasks.json',
-//         }
-//       ).as('cities');
-
-//       cy.wait('@cities');
-//     });
-//   });
-// });
+    it('Post Tasks', () => {
+      cy.request('post', 'http://localhost:8000/tasks/create-task', {
+        taskName: 'integration test post',
+        taskDescription: 'integration test post',
+        taskPriority: '1',
+        taskCategory: '1',
+        createdBy: '1',
+      });
+    });
+  });
+});
